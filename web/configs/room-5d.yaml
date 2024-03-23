@@ -1,0 +1,43 @@
+dimensions:
+  x:
+    - 0:
+      dim: x0
+      name: LY-A
+    - 1:
+      dim: x1
+      name: LY-B
+    - 2:
+      dim: x2
+      name: SC-A
+    - 3:
+      dim: x3
+      name: SC-B
+    - 4:
+      dim: x4
+      name: OP
+  y:
+    - 0:
+      dim: y0
+      name: F-PLE
+    - 1:
+      dim: y1
+      name: F-STI
+    - 2:
+      dim: y2
+      name: F-COM
+    - 3:
+      dim: y3
+      name: F-DYN
+    - 4:
+      dim: y4
+      name: F-PUB
+y_cols:
+  - 0
+  - 1
+  - 2
+  - 3
+  - 4
+dataset: dynamic
+dataset_path_csv: misc/dataset-04-rooms/rooms_xy_v2.csv
+model_dir: ckpt/euler-22-06-07-rooms-cvae8nf-onehot-full-r03/ckpt_last_seed_1234.pth.tar
+eval_fn: null

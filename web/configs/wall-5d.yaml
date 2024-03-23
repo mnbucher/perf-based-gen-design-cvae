@@ -1,0 +1,26 @@
+dimensions:
+  x:
+    - 0:
+      dim: x0
+      name: NQk (kN/m)
+    - 1:
+      dim: x1
+      name: Depth of Wall (cm)
+    - 2:
+      dim: x2
+      name: Width of Wall (cm)
+    - 3:
+      dim: x3
+      name: Height of Wall (m)
+    - 4:
+      dim: x4
+      name: Charact. Strength (MPa)
+  y:
+    - 0:
+      dim: y0
+      name: Stress Utilization (-)
+dataset: 5d-wall-v2
+y_cols:
+  - 0
+model_dir: ckpt/report-22-04-24-w5d-cvae8nfyxpart/ckpt_last_seed_1234.pth.tar
+eval_fn: evaluate_wall5d_via_excel

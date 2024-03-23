@@ -1,0 +1,209 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&display=swap");
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+html, body {
+  background-color: #e9e9e9;
+  color: #222;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+.grid-wrapper {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.title {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2rem 2rem 2rem;
+}
+.title h1 {
+  font-size: 1.309rem;
+  font-weight: 600;
+  margin-bottom: 0.309em;
+}
+.title h2 {
+  font-size: 1.309rem;
+}
+
+.content {
+  margin-bottom: 8rem;
+  display: flex;
+  justify-content: space-between;
+}
+.content .box {
+  border-radius: 10px;
+  box-sizing: border-box;
+  padding: 1.618rem;
+  border: 1px solid #d2d2d2;
+  background-color: #ffffff;
+  box-shadow: 0 5px 35px rgba(0, 0, 0, 0.05);
+}
+.content .conditioning {
+  width: 40%;
+}
+.content .input-field-wrapper {
+  width: 100%;
+  display: block;
+  margin-bottom: 1rem;
+}
+.content .input-field-wrapper label {
+  display: block;
+  width: 100%;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: #666;
+  height: 0.9rem;
+}
+.content .input-field-wrapper input {
+  display: block;
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 10px 10px;
+  box-sizing: border-box;
+  border: 1px solid #c2c2c2;
+  border-radius: 10px;
+  height: 40px;
+  color: #000 !important;
+}
+.content button {
+  width: 100%;
+  font-size: 1.618rem;
+  padding: 15px 30px;
+  border-radius: 10px;
+  border: 2px solid #6daa4d;
+  color: #ffffff;
+  box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.2);
+  background-color: #7ab55c;
+  cursor: pointer;
+}
+.content button:hover {
+  background-color: #6daa4d;
+}
+.content h2 {
+  text-align: center;
+  font-size: 1.309rem;
+  margin-bottom: 1em;
+}
+.content h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 1.618rem;
+}
+.content .last-request {
+  text-align: left;
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.5;
+}
+.content .params {
+  width: 100%;
+  padding: 1.309rem 1.618rem 0.618rem;
+  box-sizing: border-box;
+}
+.content .params-y {
+  margin-bottom: 1.618rem;
+  border-radius: 10px;
+  border: 1px solid rgba(150, 150, 150, 0.3);
+  background-color: rgba(150, 150, 150, 0.2);
+}
+.content .params-x {
+  margin-bottom: 1.618rem;
+  border-radius: 10px;
+  border: 1px solid rgba(150, 150, 150, 0.3);
+  background-color: rgba(150, 150, 150, 0.1);
+}
+.content .params-button {
+  padding: 0;
+}
+.content .generated {
+  width: 58%;
+}
+.content .generated .params {
+  max-width: none;
+}
+.content .generated .input-field-wrapper {
+  display: flex;
+  max-width: none;
+  justify-content: space-between;
+}
+.content .generated .input-field-wrapper .input-field {
+  width: 60%;
+  max-width: 300px;
+}
+.content .generated .input-field-wrapper input {
+  color: #000 !important;
+}
+.content .generated .input-field-wrapper .error {
+  width: 40%;
+  margin-left: 30px;
+  align-self: flex-end;
+}
+.content .generated .input-field-wrapper .error .error-title {
+  margin-bottom: 10px;
+}
+.content .generated .input-field-wrapper .error .error-text {
+  font-size: 1.618rem;
+  margin-bottom: 5px;
+}
+.content .generated .total-error {
+  border: 1px solid #ffdfd3;
+  background-color: rgba(255, 223, 211, 0.5);
+  padding: 1.618rem 1.618rem 0.618rem;
+  border-radius: 10px;
+}
+.content .generated .total-error p {
+  font-size: 1.309rem;
+  font-weight: 400;
+  margin-bottom: 0.618em;
+}
+.content .generated .total-error p span {
+  font-weight: 600;
+}
+
+/*# sourceMappingURL=style.css.map */

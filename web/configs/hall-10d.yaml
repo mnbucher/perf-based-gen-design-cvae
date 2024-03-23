@@ -1,0 +1,46 @@
+dimensions:
+  x:
+    - 0:
+      dim: x0
+      name: Span (m)
+    - 1:
+      dim: x1
+      name: Support Height (m)
+    - 2:
+      dim: x2
+      name: Roof Slope (m)
+    - 3:
+      dim: x3
+      name: Frame Spacing (m)
+    - 4:
+      dim: x4
+      name: Design Load (kN/m)
+    - 5:
+      dim: x5
+      name: Support Profile (mm)
+    - 6:
+      dim: x6
+      name: Transom Profile (mm)
+    - 7:
+      dim: x7
+      name: Cove Profile (mm)
+    - 8:
+      dim: x8
+      name: Cove Profile Factor (-)
+    - 9:
+      dim: x9
+      name: Cove Length Factor (-)
+  y:
+    - 0:
+      dim: y0
+      name: Support Utilization (-)
+    - 1:
+      dim: y1
+      name: Transom Utilization (-)
+y_cols:
+  - 0
+  - 1
+dataset: dynamic
+dataset_path_csv: misc/dataset-03-halls/hallen_xy.csv
+model_dir: ckpt/22-04-20-hallen-cvae5nfyxpartial-s1234/ckpt_last_seed_1234.pth.tar
+eval_fn: null

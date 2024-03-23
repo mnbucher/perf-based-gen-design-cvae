@@ -1,0 +1,124 @@
+<!doctype html>
+<title>Generative Model — Master Thesis</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<div>
+
+	<div class="grid-wrapper title">
+		<h1>Generative Design Interface</h1>
+		<h2>{{ title }}</h2>
+	</div>
+
+	<div class="grid-wrapper content">
+		<div class="box conditioning">
+			<form method="POST">
+
+				<h2>Conditions</h2>
+
+				<div class="params params-x">
+				<h3>X: Design Parameters</h3>
+				{% for j in range(n_xs) %}
+					<div class="input-field-wrapper">
+						<div class="input-field">
+							{% if gen_config.get("dimensions").get("x")[j].get("values_to_choose") != "" %}
+								<label for={{gen_config.get("dimensions").get("x")[j].get("dim")}} >Choose from: {{ gen_config.get("dimensions").get("x")[j].get("values_to_choose") }}</label>
+							{% endif %}
+							<label for={{gen_config.get("dimensions").get("x")[j].get("dim")}} >Dim. {{ gen_config.get("dimensions").get("x")[j].get("dim") }}: {{ gen_config.get("dimensions").get("x")[j].get("name") }}</label>
+							<input type="number" step="any" name={{gen_config.get("dimensions").get("x")[j].get("dim")}} value={{ req_y_x_strs[j] if req_y_x_strs}} >
+						</div>
+					</div>
+				{% endfor %}
+				</div>
+
+				<div class="params params-y">
+					<h3>Y: Performance Attributes</h3>
+					{% for i in range(n_ys) %}
+						<div class="input-field-wrapper">
+							<div class="input-field">
+								{% if gen_config.get("dimensions").get("y")[i].get("values_to_choose") != "" %}
+									<label for={{gen_config.get("dimensions").get("y")[i].get("dim")}} >Choose from: {{ gen_config.get("dimensions").get("y")[i].get("values_to_choose") }}</label>
+								{% endif %}
+								<label for={{gen_config.get("dimensions").get("y")[i].get("dim")}} >Dim. {{ gen_config.get("dimensions").get("y")[i].get("dim") }}: {{ gen_config.get("dimensions").get("y")[i].get("name") }}</label>
+								<input type="number" step="any" name={{gen_config.get("dimensions").get("y")[i].get("dim")}} value={{ req_y_strs[i] if req_y_strs}} >
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+
+				<div class="params params-button">
+					<button type="submit">Generate Sample →</button>
+				</div>
+			</form>
+
+			{% if request_form %}
+			<div class="last-request">
+				<p>Last request performed at: <br/>{{ now }}</p>
+			</div>
+			{% endif %}
+		</div>
+
+
+		{% if request_form %}
+		<div class="box generated">
+
+			<h2>Generated Sample</h2>
+
+			<div class="params params-x">
+				<h3>X: Design Parameters</h3>
+				{% for j in range(n_xs) %}
+					<div class="input-field-wrapper">
+						<div class="input-field">
+							{% if gen_config.get("dimensions").get("x")[j].get("values_to_choose") != "" %}
+								<label for={{gen_config.get("dimensions").get("x")[j].get("dim")}} ></label>
+							{% endif %}
+							<label for={{gen_config.get("dimensions").get("x")[j].get("dim")}} >Dim. {{gen_config.get("dimensions").get("x")[j].get("dim")}}: {{gen_config.get("dimensions").get("x")[j].get("name")}}</label>
+							<input type="number" name={{gen_config.get("dimensions").get("x")[j].get("dim")}} value={{ x_hat[j] }} readonly>
+						</div>
+						{% if all_errors.get("relative_errors_x") != None and all_errors.get("relative_errors_x")[j] != -1.0 %}
+							<div class="error">
+								<p class="error-title">Relative Error:</p>
+								<p class="error-text">{{ all_errors.get("relative_errors_x")[j] }} %</p>
+							</div>
+						{% endif %}
+					</div>
+				{% endfor %}
+			</div>
+
+			<div class="params params-y">
+				<h3>Y: Performance Attributes</h3>
+				{% for i in range(n_ys) %}
+					<div class="input-field-wrapper">
+						<div class="input-field">
+							{% if gen_config.get("dimensions").get("y")[i].get("values_to_choose") != "" %}
+								<label for={{gen_config.get("dimensions").get("y")[i].get("dim")}} ></label>
+							{% endif %}
+							<label for={{gen_config.get("dimensions").get("y")[i].get("dim")}} >Dim. {{gen_config.get("dimensions").get("y")[i].get("dim")}}: {{gen_config.get("dimensions").get("y")[i].get("name")}}</label>
+							<input type="number" name={{gen_config.get("dimensions").get("y")[i].get("dim")}} value={{ y_true[i] if y_true is not none else "" }} readonly>
+						</div>
+						{% if all_errors.get("relative_errors_y") != None and all_errors.get("relative_errors_y")[i] != -1.0 %}
+							<div class="error">
+								<p class="error-title">Relative Error:</p>
+								<p class="error-text">{{ all_errors.get("relative_errors_y")[i] }} %</p>
+							</div>
+						{% endif %}
+					</div>
+				{% endfor %}
+			</div>
+
+			{% if all_errors.get("total_err_y") != None or all_errors.get("total_err_y") != None %}
+			<div class="total-error">
+				{% if all_errors.get("total_err_y") != None %}
+					<p>Mean Error for Y: <span>{{ all_errors.get("total_err_y") }} %</span></p>
+				{% endif %}
+				{% if all_errors.get("total_err_x") != None %}
+					<p>Mean Error for X: <span>{{ all_errors.get("total_err_x") }} %</span></p>
+				{% endif %}
+			</div>
+			{% endif %}
+
+		</div>
+		{% endif %}
+
+	</div>
+</div>

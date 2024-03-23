@@ -1,0 +1,13 @@
+[Unit]
+Description=gunicorn daemon
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/home/git/eth-master-thesis/
+
+ExecStart=/home/git/eth-master-thesis/.venv/bin/gunicorn --timeout 600 --access-logfile /home/git/eth-master-thesis/gunicorn_access.log --error-logfile /home/git/eth-master-thesis/gunicorn_error.log --workers 1 --bind=unix:/home/git/eth-master-thesis.sock 'wsgi:get_middleware()'
+
+[Install]
+WantedBy=multi-user.target
